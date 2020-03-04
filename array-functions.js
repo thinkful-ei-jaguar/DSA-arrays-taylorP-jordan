@@ -36,12 +36,12 @@ const maxSum = (arr) => {
 
 const mergeArrays = (arr1, arr2) => {
 
-  const oneArr = arr1;
+  const oneArr = [...arr1, ...arr2];
   let n = oneArr.length;
 
-  for (let i = 0; i<arr2.length; i++){
-    oneArr.push(arr2[i]);
-  }
+  // for (let i = 0; i<arr2.length; i++){
+  //   oneArr.push(arr2[i]);
+  // }
   while(n !== 0){
     let newN = 0;
     for(let i = 1; i < oneArr.length; i++) {
@@ -61,3 +61,53 @@ const mergeArrays = (arr1, arr2) => {
 const arr1 = [1, 3, 6, 8, 11];
 const arr2 = [2, 3, 5, 8, 9, 10];
 console.log(mergeArrays(arr1, arr2));
+
+const removeChar = (str, remove) => {
+  let tempArr = [];
+  let newStr = [];
+  let newStrMod = '';
+
+  let idx = 0, x = 0;
+
+  for(let i =0; i<remove.length; i++) {
+    idx = Math.abs(remove[i].charCodeAt()-'a'.charCodeAt())
+    console.log(idx)
+    if(!tempArr[idx]) {
+      tempArr[idx] = 1;
+    }
+  }
+  console.log(tempArr)
+  
+  for(let i=0; i<str.length; i++) {
+    idx = Math.abs(str[i].charCodeAt()-'a'.charCodeAt())
+    console.log(idx)
+    if(!tempArr[idx]) {
+      newStr[x++] = str[i];
+    }
+  }
+
+  console.log(newStr)
+
+  for(let i=0; i<newStr.length; i++) {
+    newStrMod += newStr[i];
+  }
+
+  return newStrMod
+}
+
+console.log(removeChar('Battle of the Vowels: Hawaii vs. Grozny', 'aeiou'))
+
+const products = (arr) => {
+  let results =[];
+  let tempArr = [];
+  let product = 1;
+  for(let i = 0; i<arr.length; i++){
+    product *= arr[i]
+  }
+  for(let i = 0; i<arr.length; i++){
+    results.push(product/arr[i])
+  }
+  return results
+}
+const arr1 = [1, 3, 9, 4]
+console.log(products(arr1))
