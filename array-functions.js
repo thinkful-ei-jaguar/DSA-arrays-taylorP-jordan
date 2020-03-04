@@ -109,5 +109,26 @@ const products = (arr) => {
   }
   return results
 }
-const arr1 = [1, 3, 9, 4]
-console.log(products(arr1))
+// const arr1 = [1, 3, 9, 4]
+// console.log(products(arr1))
+
+// const twoDArr = ( labyrinth, row, col) => {
+
+//   // matrix[0][0]
+//   if (labyrinth[0][0] === 0 ){
+//     labyrinth[0] = [0, 0, 0, 0, 0];
+//   }
+
+//   return labyrinth;
+
+// }
+
+// const matrix = [
+//   [1,0,1,1,0],
+//   [0,1,1,1,0],
+//   [1,1,1,1,1],
+//   [1,0,1,1,1],
+//   [1,1,1,1,1]
+// ];
+
+// console.log(twoDArr(matrix))
