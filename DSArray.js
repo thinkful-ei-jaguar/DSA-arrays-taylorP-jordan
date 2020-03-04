@@ -1,4 +1,8 @@
-const memory = require('./memory');
+const mem = require('./memory');
+const memory = new mem();
+// import memory from './memory';
+// const {allocate} = require('./memory');
+
 
 class DSArray {
   constructor() {
@@ -9,19 +13,21 @@ class DSArray {
 
   push(value) {
     if(this.length >= this._capactiy) {
-      this._resize((this.length+1)*DSArray.SIZE_RATIO);
+      this._resize((this.length+1) * DSArray.SIZE_RATIO);
     }
     memory.set((this.ptr+this.length), value);
     this.length++;
   }
 
   _resize(size) {
-    let newPtr = memory.allocate(size);
     let oldPtr = this.ptr;
-    if(newPtr === null) {
+    // let newPtr = memory.allocate(size);
+    this.ptr = memory.allocate(size);
+
+    if(this.ptr === null) {
       throw new error('Out of memory');
     }
-    memory.copy(newPtr, oldPtr, this.length);
+    memory.copy(this.ptr, oldPtr, this.length);
     memory.free(oldPtr);
     this._capactiy = size;
   }
@@ -75,10 +81,28 @@ class DSArray {
 
   }
 }
+
 DSArray.SIZE_RATIO = 3;
 
 // const arr[] = 50; --> 310 --> arr for 50 blocks
-
 // let arr = 310
-
 // arr[3]; --> 312
+
+function main(){
+  DSArray.SIZE_RATIO = 3;
+
+  // Create an instance of the Array class
+  let arr = new DSArray();
+
+  // Add an item to the array
+  arr.push(3);
+  arr.push(5);
+  arr.push(15);
+  arr.push(19);
+  arr.push(45);
+  arr.push(10);
+
+  console.log(arr);
+}
+
+main();
