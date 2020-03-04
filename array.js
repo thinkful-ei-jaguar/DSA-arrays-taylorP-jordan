@@ -1,4 +1,4 @@
-import memory from './memory'
+const memory = require('./memory')
 
 class Array {
   constructor() {
@@ -26,12 +26,14 @@ class Array {
       memory.free(oldPtr);
       this._capacity = size;
   }
+
   get(index) {
     if (index < 0 || index >= this.length) {
         throw new Error('Index error');
     }
     return memory.get(this.ptr + index);
   }
+
   pop() {
     if (this.length == 0) {
         throw new Error('Index error');
@@ -40,6 +42,7 @@ class Array {
     this.length--;
     return value;
   }
+
   insert(index, value) {
     if (index < 0 || index >= this.length) {
         throw new Error('Index error');
@@ -53,6 +56,7 @@ class Array {
     memory.set(this.ptr + index, value);
     this.length++;
   }
+
   remove(index) {
     if (index < 0 || index >= this.length) {
         throw new Error('Index error');
