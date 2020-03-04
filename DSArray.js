@@ -96,15 +96,15 @@ function main(){
 
   // Add an item to the array
   arr.push(3);
-  // arr.push(5);
-  // arr.push(15);
-  // arr.push(19);
-  // arr.push(45);
-  // arr.push(10);
+  arr.push(5);
+  arr.push(15);
+  arr.push(19);
+  arr.push(45);
+  arr.push(10);
 
-  // arr.pop();
-  // arr.pop();
-  // arr.pop();
+  arr.pop();
+  arr.pop();
+  arr.pop();
 
   // arr.push('tauhida');
 
@@ -112,3 +112,28 @@ function main(){
 }
 
 main();
+
+const URLify = (str) => {
+  let idx = str.indexOf(' ')
+  let part = str.slice(0, idx)
+  let rest = str.slice(idx+1)
+  if(!rest.includes(' ')){
+    return part+'%20'+rest;
+  }
+  return part+'%20'+functionA(rest)
+}
+
+//console.log(URLify('tay lor pic'));
+
+const filterLessThanFive = (arr) => {
+  let results =[];
+  for(let i=0; i<arr.length; i++) {
+    if(arr[i]>=5) {
+      results.push(arr[i])
+    }
+  }
+  return results
+}
+let array = [1,4,5,6,7,8,2]
+
+console.log(filterLessThanFive(array));
